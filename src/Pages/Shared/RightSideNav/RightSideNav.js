@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { FaFacebook, FaGithub, FaGoogle, FaTwitch, FaTwitter, FaWhatsapp } from "react-icons/fa";
 import ListGroup from 'react-bootstrap/ListGroup';
+import BrandCarousel from '../BrandCarousel/BrandCarousel';
 
 const RightSideNav = () => {
     return (
@@ -21,7 +22,9 @@ const RightSideNav = () => {
                     <ListGroup.Item className='mb-2'><FaTwitch></FaTwitch> Twitch</ListGroup.Item>
                 </ListGroup>
             </div>
-
+            <div>
+                <BrandCarousel></BrandCarousel>
+            </div>
         </div>
     );
 };
