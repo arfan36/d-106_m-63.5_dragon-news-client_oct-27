@@ -7,7 +7,7 @@ import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 const Register = () => {
     const [error, setError] = useState('');
     const [accepted, setAccepted] = useState(false);
-    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const { createUser, updateUserProfile, verifyEmail } = useContext(AuthContext);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -23,20 +23,28 @@ const Register = () => {
             console.log("🚀 ~ user", user);
             setError('');
             form.reset();
-            handleUpdateProfile(name, photoURL);
+            handleUpdateUserProfile(name, photoURL);
+            handleEmailVerification();
         }).catch((err) => {
             console.error('err', err);
             setError(err.message);
         });
     };
 
-    const handleUpdateProfile = (name, photoURL) => {
+    const handleUpdateUserProfile = (name, photoURL) => {
         const profile = {
             displayName: name,
             photoURL: photoURL
         };
-        updateUserProfile(profile).then((result) => {
 
+        updateUserProfile(profile).then(() => {
+        }).catch((err) => {
+            console.error('err', err);
+        });
+    };
+
+    const handleEmailVerification = () => {
+        verifyEmail().then(() => {
         }).catch((err) => {
             console.error('err', err);
         });
