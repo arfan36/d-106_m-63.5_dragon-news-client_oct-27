@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
@@ -25,6 +26,7 @@ const Register = () => {
             form.reset();
             handleUpdateUserProfile(name, photoURL);
             handleEmailVerification();
+            toast.success('Please verify your email address. If needed check spam folder');
         }).catch((err) => {
             console.error('err', err);
             setError(err.message);
