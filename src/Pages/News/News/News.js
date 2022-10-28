@@ -2,9 +2,12 @@ import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import { Button } from 'react-bootstrap';
+import useTitle from '../../../hooks/useTitle';
 
 const News = () => {
     const news = useLoaderData();
+    useTitle('News Details');
+
     const { title, image_url, details, category_id } = news;
     return (
         <Card>
